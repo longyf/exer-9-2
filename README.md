@@ -6,9 +6,10 @@ appendHead:
 	after appending, the size of queue1 is 1.
 
 deleteHead:
-	if size of queue1 is 1.
-		delete the element.
-	else: size of queue1 is 0.
-		move the elements from queue2 to queue1, then move n-1 elements from queue1 to queue2. 
-		now there are just one element in queue1.
-		delete that element.
+
+queue1.size==0&&queue2.size==0
+    throw runtime_error
+queue1.size==0&&queue2.size!=0
+    move n-1 elements from queue2 to queue1, delete queue2.front()
+queue1.size==1
+    delete queue1.front()

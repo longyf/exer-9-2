@@ -7,9 +7,11 @@ using namespace std;
 int main() {
 	mystack<int> stack;
 	stack.appendHead(1);
-	stack.appendHead(2);
 	cout<<stack.deleteHead()<<endl;
+	stack.appendHead(2);
 	stack.appendHead(3);
+	cout<<stack.deleteHead()<<endl;
+	stack.appendHead(4);
 	cout<<stack.deleteHead()<<endl;
 	cout<<stack.deleteHead()<<endl;
 

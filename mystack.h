@@ -38,23 +38,28 @@ void mystack<T>::appendHead(const T &node) {
 
 template <class T>
 T mystack<T>::deleteHead() {
-	if (queue1.empty()&&queue2.empty()) 
+	
+	if (queue1.empty()&&queue2.empty()) {
+		//q1.size==0&&q2.size==0
 		throw runtime_error("The stack is empty.");
+	}
 
-	if (queue1.size()!=1) {
-		while (!queue2.empty()) {
+	else if (queue1.size()==0) {
+		//q1.size==0&&q2.size!=0
+		while (queue2.size()!=1) {
 			queue1.push(queue2.front());
 			queue2.pop();
 		}
-
-		while (queue1.size()!=1) {
-			queue2.push(queue1.front());
-			queue1.pop();
-		}
+		T temp=queue2.front();
+		queue2.pop();
+		return temp;
 	}
 
-    T temp=queue1.front();
-    queue1.pop();
-    return temp;
+	else {
+		//q1.size==1
+	    T temp=queue1.front();
+	    queue1.pop();
+	    return temp;
+	}
 }
 #endif
