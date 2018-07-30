@@ -41,25 +41,23 @@ T mystack<T>::deleteHead() {
 	
 	if (queue1.empty()&&queue2.empty()) {
 		//q1.size==0&&q2.size==0
-		throw runtime_error("The stack is empty.");
+		throw runtime_error("Can not delete an element from an empty stack.");
 	}
 
-	else if (queue1.size()==0) {
-		//q1.size==0&&q2.size!=0
-		while (queue2.size()!=1) {
+	if (queue1.size()==0) {
+		//leave the element to be deleted in queue1.
+		while (queue2.size()!=0) {
 			queue1.push(queue2.front());
 			queue2.pop();
 		}
-		T temp=queue2.front();
-		queue2.pop();
-		return temp;
+		while (queue1.size() != 1) {
+			queue2.push(queue1.front());
+			queue1.pop();
+		}
 	}
 
-	else {
-		//q1.size==1
-	    T temp=queue1.front();
-	    queue1.pop();
-	    return temp;
-	}
+    T temp=queue1.front();
+    queue1.pop();
+    return temp;
 }
 #endif

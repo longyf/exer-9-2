@@ -1,6 +1,6 @@
 #include <iostream>
 #include <stdexcept>
-#include "mystack.h"
+#include "mystack-2.h"
 
 using namespace std;
 
@@ -16,7 +16,12 @@ int main() {
 	cout<<stack.deleteHead()<<endl;
 
 	cout<<"Now stack is empty."<<endl;
-	cout<<stack.deleteHead()<<endl;
+
+	try {
+		cout<<stack.deleteHead()<<endl;
+	} catch (runtime_error err) {
+		cout<<err.what()<<endl;
+	}
 	
 	return 0;
 }
